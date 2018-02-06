@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current # of Pixels</title>
+</head>
+<body>
+
+<p id="width"></p>
+<p id="height"></p>
+<p id="pixels"></p>
+
+<script>
+
+    // get the width of the window
+    var width_para = document.getElementById("width");
+    var width_of_window = window.innerWidth;
+    width_para.innerHTML = "Current Width: " + width_of_window;
+    // get the height of the window
+    var height_para = document.getElementById("height");
+    var height_of_window = window.innerHeight;
+    height_para.innerHTML = "Current Height: " + height_of_window;
+    // calculate the pixels (width * height)
+    var pixels_para = document.getElementById("pixels");
+    var pixels = width_of_window * height_of_window;
+    pixels_para.innerHTML = "Current Pixels: " + pixels;
+
+    // Add listener to display updated pixels when window is resized
+    window.addEventListener("resize", windowWasResized);
+    function windowWasResized() {
+        alert("You have re-sized the window!");
+        // get the width of the window
+        width_para = document.getElementById("width");
+        width_of_window = window.innerWidth;
+        width_para.innerHTML = "Current Width: " + width_of_window;
+        // get the height of the window
+        height_para = document.getElementById("height");
+        height_of_window = window.innerHeight;
+        height_para.innerHTML = "Current Height: " + height_of_window;
+        // calculate the pixels (width * height)
+        pixels_para = document.getElementById("pixels");
+        pixels = width_of_window * height_of_window;
+        pixels_para.innerHTML = "Current Pixels: " + pixels;
+    }
+
+</script>
+
+</body>
+</html>
