@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Random Color Generator</title>
 </head>
 <body>
+
+<div id="colors" style="width:500px; height:500px; background-color:grey">
+
+</div>
+
+<button id="randomColor" onclick="changeToRandomColor()">Generate Random Color</button>
+<br/><br/>
+<button id="saveColor" onclick="saveColorToTable()">Save Color</button>
+
+<p>
+    <h3>Saved Colors</h3>
+    <table id="favoriteColors"></table>
+</p>
+
+<script>
+
+    function randomColor() {
+        var r = Math.floor(Math.random() * 255); // Pick a random number between 0 and 1
+        var g = Math.floor(Math.random() * 255); // Multiply by 255 to get a number in the correct range
+        var b = Math.floor(Math.random() * 255); // Then convert it to an int
+
+        var colorString = "rgb(" + r + ", " + g + ", " + b + ")";
+
+        return colorString
+    }
+
+    function changeToRandomColor() {
+
+        document.getElementById("colors").style.backgroundColor = randomColor();
+    }
+
+    function saveColorToTable() {
+        var table = document.getElementById("favoriteColors");
+        var row = table.insertRow(0);
+        var column1 = row.insertCell(0);
+        var column2 = row.insertCell(1);
+        column1.innerHTML = document.getElementById("colors").style.backgroundColor.toString();
+        column2.style.backgroundColor = document.getElementById("colors").style.backgroundColor;
+        column1.style.width = "150px";
+        column2.style.width = "150px";
+    }
+
+
+</script>
 
 </body>
 </html>

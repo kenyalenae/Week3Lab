@@ -10,7 +10,7 @@
 <form>
     <label>
         Please enter item to add to list:
-        <input id="list" type="text" name="list" maxlength="50"
+        <input id="list" type="text" name="list"
                 required="required">
     </label>
 </form>
@@ -29,14 +29,13 @@
     //Find the add button, and add a click listener
     document.getElementById('add').addEventListener('click', addToList);
 
-
-
-
     function addToList() {
 
-        var newItem = document.getElementById('list');
-        // if user puts text in input box then display their item
-        //if (newItem = document.getElementsByTagName('input')) {
+        var newItem = document.getElementById('list').value.length;
+
+        if (newItem >= 50) {
+            alert("Text is too long. Maximum of 50 characters.");
+        } else if (newItem < 50 && newItem > 0) {
 
             //Find the ul list by the id
             var my_list_element = document.getElementById('my_list');
@@ -45,16 +44,16 @@
             var new_list_item = document.createElement('li');
             console.log(newItem);
             //Configure properties of this element. innerHTML can be any valid text or HTML.
-            new_list_item.innerHTML = newItem.value;
+            new_list_item.innerHTML = document.getElementById("list").value;
 
             //Add the new item as a new child to the unordered list
             my_list_element.appendChild(new_list_item);
 
-            newItem.value = ""
+            // clear the contents of the input box
+            document.getElementById("list").value = "";
+        }
 
-        //}
     }
-
 
 
 </script>

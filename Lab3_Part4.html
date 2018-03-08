@@ -9,7 +9,7 @@
 <H1>Lab 3, <span class="copyme">advanced</span>, part 2</H1>
 
 <div>
-    <b><i>The objective of this lab</i></b> <span class="copyme">is</span> to practice using <span class="copyme">javascript</span> <b class="large">selectors</b> to identify a specific element or a list of elements.</p>
+    <p><b><i>The objective of this lab</i></b> <span class="copyme">is</span> to practice using <span class="copyme">javascript</span> <b class="large">selectors</b> to identify a specific element or a list of elements.</p>
 
     <p>Write a <b class="large">script</b> to make the following changes to this page. Don't change the HTML!</p>
 
@@ -38,7 +38,7 @@
 
 <p>Some <i>italic text</i> that is <i>not</i> inside an unordered list...</p>
 <ul>
-    <li>And some <i>italic</i> text inside a list</li>
+    <li id="lastListElement">And some <i>italic</i> text inside a list</li>
 </ul>
 
 
@@ -46,9 +46,39 @@
 
 <script>
 
-    var p = document.querySelectorAll("p")
+    // count number of P elements and display in paragraph with id "p_count"
+    var p = document.getElementsByTagName("p");
+    var numP = p.length;
+    document.getElementById("p_count").innerHTML = numP;
+
+    // increase font size of all bold elements with class "large"
+    var boldElements = document.getElementsByTagName("b"); // get all bold elements
+    for (var i = 0; i < boldElements.length; i++) {
+        if (boldElements[i].classList.contains("large")) {
+            boldElements[i].style.fontSize = "2em";
+        }
+    }
+
+    // select all italic text with unordered lists and change to color of choice
+    var lists = document.getElementsByTagName("ul");
+    for (var x = 0; x <lists.length; x++) {
+        var items = lists[x].getElementsByTagName("i");
+        for (var y = 0; y < items.length; y++) {
+            items[y].style.color = "blue";
+        }
+    }
+
+    // TODO sort span elements with class "copy me" in reverse order and concatenate all strings together
 
 
+    // Add a mouseover and mouseout listener to the last list list element on the page - and only the last list element.
+    // Mousing over this element will cause the text color to change. Mouse out will cause it to change back to the original color.
+    document.getElementById("lastListElement").addEventListener("mouseover", function(){
+        this.style.color = "pink";
+    });
+    document.getElementById("lastListElement").addEventListener("mouseout", function(){
+        this.style.color = "black";
+    });
 
 </script>
 

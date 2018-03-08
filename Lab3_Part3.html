@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Movie Ratings</title>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -11,9 +16,43 @@
 <p>Girls Trip, <span class="rating">4 Stars</span></p>
 
 <script>
-    document.getElementsByClassName("rating").innerHTML ='\u2605';
+
+    window.addEventListener("load", changeToStars);
+    function changeToStars() {
+        var movies = document.getElementsByClassName("rating");
+        for (var i = 0; i < movies.length; i++) {
+            var starNumber = movies[i].innerHTML.charAt(0); // get the number of stars by taking first character of span
+            movies[i].innerHTML = ""; // clear text from the span
+            for (var x = 0; x < starNumber; x++) {
+                movies[i].innerHTML = movies[i].innerHTML + "<span class='glyphicon glyphicon-star'></span>";
+            }
+        }
+    }
+
+    // code from teacher below
+    // get all the span elements
+    //allTheStarSpans = document.getElementsByClassName('rating');
+
+    // Loop over the list of span elements
+    //for (var i = 0 ; i < allTheStarSpans.length ; i++) {
+
+        // get one span element
+    //    var oneRating = allTheStarSpans[i];
+        // and the text from that span
+    //    var ratingText = oneRating.innerHTML;  /// e.g. "4 stars"
+
+        //Figure out how many stars that is - read the first character from the string?
+
+        // Generate a new string of stars e.g. "****"
+
+        // set the innerHTML of oneRating to the starString
+    //}
+
 
 </script>
 
 </body>
 </html>
+
+
+
